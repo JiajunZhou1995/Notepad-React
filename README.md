@@ -25,7 +25,7 @@ First, Install postgres and creat a server with following credentials
 
 After you login to your server, set up a postgres database called 'todo' on your local machine.
 
-Now, you are really to clone my code!
+Now, you are ready to clone my code!
 
 ```bash
 # Clone this repository
