@@ -19,7 +19,8 @@ This nice and clean Notepad is available 24/7 in here: [Notepad](http://aws.jiaj
 
 First, Install postgres and creat a server with following credentials
 
-**username:postgres password:password**
+**username:postgres**
+**password:password**
 
 After you login to your server, set up a postgres database called 'todo' on your local machine.
 
