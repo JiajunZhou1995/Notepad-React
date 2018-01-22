@@ -1,0 +1,193 @@
+body {
+	padding: 50px;
+}
+
+h1{
+	font-size: 3.5rem;
+	text-align: center;   
+	margin-bottom: 2rem;
+}
+
+.new-todo:hover {
+	background-color: #fcfc63;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.form-control.todoInput {
+	width: 40%;
+}
+
+.empty-todo {
+	width: 600px;
+	height: 50px;
+	text-align: center;
+	margin: auto;
+	background-color: #ffff99;
+}
+
+.note-row-complete{
+	border-radius: 0px;
+	width: 600px;
+	height: 50px;
+	padding: 0px;
+	text-align: center;
+	margin: auto;
+	background-color: #99ff99;
+	animation-name: uncompleting-row;
+	animation-duration: 0.5s;
+}
+
+.note-row-incomplete{
+	border-radius: 0px;
+	width: 600px;
+	height: 50px;
+	text-align: center;
+	margin: auto;
+	background-color: #ffff99;
+	animation-name: completing-row;
+	animation-duration: 0.5s;
+}
+
+.complete-btn-complete{
+	position: absolute;
+	left: 18px;
+	top: 11px;
+	border-radius: 0px;
+	animation-name: uncompleting;
+	animation-duration: 0.5s;
+}
+
+.complete-btn-incomplete{
+	position: absolute;
+	left: 18px;
+	top: 11px;
+	border-radius: 0px;
+	animation-name: completing;
+	animation-duration: 0.5s;
+}
+
+.textbox-complete{
+	outline: none;
+	position: absolute;
+	top: 8px;
+	left: 50px;
+	height: 34px;
+	width: 480px;
+	border: none;
+	color: black;
+	border-color: #99ff99;
+	background-color: #99ff99;
+	border-radius: 0px;
+	animation-name: uncompleting;
+	animation-duration: 0.5s;
+}
+
+.textbox-incomplete{
+	outline: none;
+	position: absolute;
+	top: 8px;
+	left: 50px;
+	height: 34px;
+	width: 480px;
+	border: none;
+	color: black;
+	border-color: #ffff99;
+	background-color: #ffff99;
+	border-radius: 0px;
+	animation-name: completing;
+	animation-duration: 0.5s;
+}
+
+.delete-btn-complete{
+	border-width: 0;
+	outline: none;
+	position: absolute;
+	top: 0px;
+	left: 550px;
+	height: 48px;
+	width: 48px;
+	color: #000000;
+  background-color: #99ff99;
+	border-color: #99ff99;
+	border-radius: 0px;
+	animation-name: uncompleting;
+	animation-duration: 0.5s;
+}
+
+.delete-btn-incomplete{
+	border-width: 0;
+	outline: none;
+	position: absolute;
+	top: 0px;
+	left: 550px;
+	height: 48px;
+	width: 48px;
+	color: #000000;
+  background-color: #ffff99;
+	border-color: #ffff99;
+	border-radius: 0px;
+	animation-name: completing;
+	animation-duration: 0.5s;
+}
+
+.delete-btn-complete:hover{
+	border-width: 0;
+	outline: none;
+	position: absolute;
+	top: 0px;
+	left: 550px;
+	height: 48px;
+	width: 48px;
+	color: #000000;
+  background-color: #ff9999;
+	border-color: #ff9999;
+	border-radius: 0px;
+	font-weight: bold;
+	cursor: pointer;
+	animation-name: uncompleting;
+	animation-duration: 0.5s;
+}
+
+.delete-btn-incomplete:hover{
+	border-width: 0;
+	outline: none;
+	position: absolute;
+	top: 0px;
+	left: 550px;
+	height: 48px;
+	width: 48px;
+	color: #000000;
+  background-color: #ff9999;
+	border-color: #ff9999;
+	border-radius: 0px;
+	font-weight: bold;
+	cursor: pointer;
+	animation-name: completing;
+	animation-duration: 0.5s;
+}
+
+
+@keyframes completing {
+	from {background-color: transparent;
+				border-color: transparent;}
+	to {background-color: #ffff99;
+			border-color: #ffff99;}
+}
+
+@keyframes uncompleting {
+	from {background-color: #ffff99;
+				border-color: #ffff99;}
+	to {background-color: #99ff99;
+			border-color: #99ff99;}
+}
+
+@keyframes completing-row {
+	from {background-color: transparent;}
+	to {background-color: #ffff99;}
+}
+
+@keyframes uncompleting-row {
+	from {background-color: #ffff99;}
+	to {background-color: #99ff99;}
+}
