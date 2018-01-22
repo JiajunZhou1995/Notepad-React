@@ -20,6 +20,7 @@ This nice and clean Notepad is available 24/7 in here: [Notepad](http://aws.jiaj
 First, Install postgres and creat a server with following credentials
 
 **username:postgres**
+
 **password:password**
 
 After you login to your server, set up a postgres database called 'todo' on your local machine.
@@ -28,9 +29,9 @@ Now, you are really to clone my code!
 
 ```bash
 # Clone this repository
-git clone https://github.com/JiajunZhou1995/Notepad.git
+git clone https://github.com/JiajunZhou1995/Notepad-React.git
 # Go into the repository
-cd Notepad
+cd Notepad-React
 # Install dependencies
 npm install
 # compile all the js code
