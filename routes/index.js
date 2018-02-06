@@ -17,7 +17,7 @@ router.post('/note/add', function(req, res) {
 
 	if(req.body.text == null){
 		err = 'text body is missing'
-		res.status(400).json({ error: err });
+		res.json({ error: err });
 		return;
 	}else{
 		var data = {text: req.body.text, complete: false};
@@ -39,8 +39,7 @@ router.post('/note/add', function(req, res) {
 
 		query.on('end', function() {
 			done();
-			results = {message: "Add Success"}
-			res.status(200).json(results);
+			res.json(results);
 		})
 	})
 }); 
@@ -65,7 +64,7 @@ router.get('/note', function(req, res) {
 			command = "SELECT * FROM items ORDER BY id DESC;";
 		}else{
 			err = 'order parameter is invalid, please enter ASC or DESC'
-			res.status(400).json({ error: err });
+			res.json({ error: err });
 			return;
 		}
 
@@ -85,7 +84,7 @@ router.get('/note', function(req, res) {
 			if(results.length == 0){
 				results = {data: "empty"}
 			}
-			res.status(200).json(results);
+			res.json(results);
 		});
 	});
 });
@@ -98,7 +97,7 @@ router.get('/note/:id', function(req, res) {
 	var id = parseInt(req.params.id);
 	if (isNaN(id)){
 		err = 'id parameter must be a number'
-		res.status(400).json({ error: err });
+		res.json({ error: err });
 		return;
 	}
 
@@ -133,18 +132,18 @@ router.put('/note/:id', function(req, res) {
 	var id = parseInt(req.params.id);
 	if (isNaN(id)){
 		err = 'id parameter must be a number'
-		res.status(400).json({ error: err });
+		res.json({ error: err });
 		return;
 	}
 
 	var results = [];
 	if(req.body.text == null){
 		err = 'text body is missing'
-		res.status(400).json({ error: err });
+		res.json({ error: err });
 		return;
 	}else if((req.body.complete != false)&&(req.body.complete != true)){
 		err = 'complete body is invalid'
-		res.status(400).json({ error: err });
+		res.json({ error: err });
 		return;
 	}else{
 		var data = { text: req.body.text, complete: req.body.complete };
@@ -168,7 +167,6 @@ router.put('/note/:id', function(req, res) {
 
 		query.on('end', function() {
 			done();
-			results = {message: "Update Success"}
 			res.json(results);
 		});
 	});
@@ -180,7 +178,7 @@ router.delete('/note/:id', function(req, res) {
 	var id = parseInt(req.params.id);
 	if (isNaN(id)){
 		err = 'id parameter must be a number'
-		res.status(400).json({ error: err });
+		res.json({ error: err });
 		return;
 	}
 
@@ -203,7 +201,6 @@ router.delete('/note/:id', function(req, res) {
 
 		query.on('end', function() {
 			done();
-			results = {message: "Delete Success"}
 			res.json(results);
 		});
 	});

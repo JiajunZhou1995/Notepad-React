@@ -78,7 +78,7 @@ Finally, go to localhost:3000 in your browser and have fun.
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{message: "Add Success"}`
+    **Content:** `{ id : 1, "text": "sample", "complete": false}`
  
 * **Error Response:**
 
@@ -206,7 +206,7 @@ Finally, go to localhost:3000 in your browser and have fun.
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{message: "Update Success"}`
+    **Content:** `{ id : 1, "text": "sample", "complete": false}`
  
 * **Error Response:**
 
@@ -252,7 +252,7 @@ Finally, go to localhost:3000 in your browser and have fun.
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{message: "Delete Success"}`
+    **Content:** `{ id : 1, "text": "sample", "complete": false}`
  
 * **Error Response:**
 
