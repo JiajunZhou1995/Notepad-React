@@ -14,7 +14,14 @@ router.get('/', function(req, res, next) {
 // Add note
 router.post('/note/add', function(req, res) {
 	var results = [];
-	var data = {text: req.body.text, complete: false};
+
+	if(req.body.text == null){
+		err = 'text body is missing'
+		res.status(400).json({ success: false, data: err });
+		return;
+	}else{
+		var data = {text: req.body.text, complete: false};
+	}
 
 	pg.connect(connectionString, function(err, client, done) {
 		if (err) {
@@ -32,7 +39,7 @@ router.post('/note/add', function(req, res) {
 
 		query.on('end', function() {
 			done();
-			res.json(results);
+			res.status(200).json(results);
 		})
 	})
 }); 
@@ -49,8 +56,18 @@ router.get('/note', function(req, res) {
 		}
 
 		// Retrieve requirment 
-		var order = req.query.order || "ASC"
-		var command = "SELECT * FROM items ORDER BY id " + order + ";"
+		var order = req.query.order || "ASC";
+		var command = "";
+		if ((order == "asc") || (order == "ASC")) {
+			command = "SELECT * FROM items ORDER BY id ASC;";
+		}else if((order == "desc") || (order == "DESC")){
+			command = "SELECT * FROM items ORDER BY id DESC;";
+		}else{
+			err = 'order parameter is invalid, please enter ASC or DESC'
+			res.status(400).json({ success: false, data: err });
+			return;
+		}
+
 		var query = client.query(command);
 
 		query.on('row', function(row) {
@@ -64,7 +81,10 @@ router.get('/note', function(req, res) {
 			var start = start - 1
 
 			results = results.slice(start,start + limit)
-			res.json(results);
+			if(results.length == 0){
+				results = {data: "empty"}
+			}
+			res.status(200).json(results);
 		});
 	});
 });
@@ -73,7 +93,13 @@ router.get('/note', function(req, res) {
 router.get('/note/:id', function(req, res) {
 	var results = [];
 
-	var id = req.params.id;
+
+	var id = parseInt(req.params.id);
+	if (isNaN(id)){
+		err = 'id parameter must be a number'
+		res.status(400).json({ success: false, data: err });
+		return;
+	}
 
 	pg.connect(connectionString, function(err, client, done) {
 		if (err) {
@@ -82,8 +108,7 @@ router.get('/note/:id', function(req, res) {
 			res.status(500).json({ success: false, data: err });
 		}
 
-		var command = "SELECT * FROM items where id = " + id + ";"
-		var query = client.query(command);
+		var query = client.query("SELECT * FROM items where id = ($1);", [id]);
 
 		query.on('row', function(row) {
 			results.push(row);
@@ -104,9 +129,25 @@ router.get('/note/:id', function(req, res) {
 // Update note
 router.put('/note/:id', function(req, res) {
 
+	var id = parseInt(req.params.id);
+	if (isNaN(id)){
+		err = 'id parameter must be a number'
+		res.status(400).json({ success: false, data: err });
+		return;
+	}
+
 	var results = [];
-	var id = req.params.id;
-	var data = { text: req.body.text, complete: req.body.complete };
+	if(req.body.text == null){
+		err = 'text body is missing'
+		res.status(400).json({ success: false, data: err });
+		return;
+	}else if((req.body.complete != false)&&(req.body.complete != true)){
+		err = 'complete body is invalid'
+		res.status(400).json({ success: false, data: err });
+		return;
+	}else{
+		var data = { text: req.body.text, complete: req.body.complete };
+	}
 
 	pg.connect(connectionString, function(err, client, done) {
 		if (err) {
@@ -134,8 +175,14 @@ router.put('/note/:id', function(req, res) {
 // Delete note
 router.delete('/note/:id', function(req, res) {
 
+	var id = parseInt(req.params.id);
+	if (isNaN(id)){
+		err = 'id parameter must be a number'
+		res.status(400).json({ success: false, data: err });
+		return;
+	}
+
 	var results = [];
-	var id = req.params.id;
 
 	pg.connect(connectionString, function(err, client, done) {
 		if (err) {
