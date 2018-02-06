@@ -44,3 +44,225 @@ Finally, go to localhost:3000 in your browser and have fun.
 
 ## WARNING
 **This is my first try on expressjs, React and Redux, so the overall desgin may not be the best, be careful if you want to imitate my code.**
+
+
+
+
+
+# API Documentation 
+
+**Add note**
+----
+  Add note to the notepad
+
+* **URL**
+
+  /note/add
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `NONE`
+
+*  **Data Params**
+
+   **Required:**
+   
+   `{"text": "sample"}`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{message: "Add Success"}`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error: 'Not found' }`
+
+  OR
+
+  * **Code:** 400 Bad Request <br />
+    **Content:** `{ error: 'text body is missing' }`
+
+
+
+**Get all note**
+----
+  Retrieve note from the notepad
+
+* **URL**
+
+  /note
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   `start:int`
+ 
+   `order:ASCD||ESC`
+   
+   `limit:int`
+
+   **Required:**
+ 
+   `NONE`
+
+*  **Data Params**
+
+   **Required:**
+   
+   `NONE`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, "text": "sample", "complete": false}`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error: 'Not found' }`
+
+  OR
+
+  * **Code:** 404 Bad Request <br />
+    **Content:** `{ error: 'order parameter is invalid, please enter ASC or DESC' }`
+
+
+**Get one note**
+----
+  Retrieve note by id from the notepad
+
+* **URL**
+
+  /note/:id
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `NONE`
+
+*  **Data Params**
+
+   **Required:**
+   
+   `NONE`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ id : 1, "text": "sample", "complete": false}`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error: 'Not found' }`
+
+  OR
+
+  * **Code:** 404 Bad Request <br />
+    **Content:** `{ error: 'id parameter must be a number' }`
+
+
+
+**Update note**
+----
+  Update note from the notepad
+
+* **URL**
+
+  /note
+
+* **Method:**
+
+  `PUT`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `NONE`
+
+*  **Data Params**
+
+   **Required:**
+   
+   `{"text": "sample", "complete": false}`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{message: "Update Success"}`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error: 'Not found' }`
+
+  OR
+
+  * **Code:** 404 Bad Request <br />
+    **Content:** `{ error: 'text body is missing' }`
+
+  OR
+
+  * **Code:** 404 Bad Request <br />
+    **Content:** `{ error: 'complete body is invalid' }`
+
+
+
+**Delete one note**
+----
+  Delete note by id from the notepad
+
+* **URL**
+
+  /note/:id
+
+* **Method:**
+
+  `DELETE`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `NONE`
+
+*  **Data Params**
+
+   **Required:**
+   
+   `NONE`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{message: "Delete Success"}`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error: 'Not found' }`
+
+  OR
+
+  * **Code:** 404 Bad Request <br />
+    **Content:** `{ error: 'id parameter must be a number' }`
+
+
+
