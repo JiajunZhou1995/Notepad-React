@@ -2,14 +2,14 @@
 
 **This is a notepad SPA (single page application) with a react and redux front-end and a rest API that uses a postgres to store notes.**
 
-Technology used:
+Technology used in this project:
 - Written in es6 (use babel)
+- React for building user interfaces
+- Redux for data flow
 - Use webpack for packaging client side code
-- expressjs
+- expressjs for backend API routing
 - nodejs
 - npm
-- React
-- Redux
 - CSS animations
 - Postgress
 
